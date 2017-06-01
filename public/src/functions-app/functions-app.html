@@ -1,27 +1,195 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../app-icons.html">
 
 <dom-module id="functions-app">
   <template>
     <style>
       :host {
         display: block;
+        text-align: center;
       }
+
+      header {
+        background-color: #F57C00;
+        width: 100%;
+        height: 240px;
+      }
+
+      header h1 {
+        color: white;
+        font-size: 60px;
+        font-weight: 500;
+        text-align: center;
+        padding-top: 50px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+
+      paper-icon-button {
+        color: white;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+
+      header h2 {
+        color: white;
+        font-size: 30px;
+        font-weight: 200;
+        text-align: center;
+
+        margin-top: 0px;
+      }
+
+      paper-toolbar .title {
+        font-weight: 500;
+        font-size: 43px;
+        margin-top: 30px;
+      }
+
+      a {
+        color: #F57C00;
+        text-decoration: none;
+      }
+
+      
+
+      a:hover {
+        border-bottom: medium dotted #F57C00;
+      }
+
+      a:active {
+        color: #FFCA28;
+        border-bottom-color: #FFCA28;
+      }
+
+      google-map {
+        height: 330px;
+        width: 100%;
+      }
+
+      .main { 
+        padding: 70px;
+        font-size: 28px;
+        max-width: 1000px;
+        margin:0px auto;
+        text-align: center;
+        font-weight: 200;
+      }
+
+      #enroll {
+        margin-bottom: 50px;
+        font-size: 20px;
+        --paper-button-ink-color: #FFCA28;
+        --paper-button: {
+          color: white;
+          background-color: #FFA000;
+        };
+      }
+
+      @media screen and (max-width: 960px){
+        header h1 {
+          font-size: 33px;
+          padding-top: 60px;
+          padding-right: 40px;
+          padding-left: 40px;
+
+        }
+        header h2 {
+          font-size: 24px;
+          padding-right: 40px;
+          padding-left: 40px;
+
+        }
+
+        .main { 
+          font-size: 22px;
+        }
+
+        
+      }
+
+
     </style>
-    <h2>Hello [[prop1]]!</h2>
+
+    <header>
+      <paper-icon-button icon="app-icons:share"></paper-icon-button>
+      <h1>Cloud Functions for Firebase</h1>
+      <h2>GDG Sessions for Startups</h2> 
+    </header>
+
+    <p class="main">
+      Join mentors such as <a href="#">Paola García</a> and <a href="#">Carlos Azaustre</a> in one of your local GDG events in order to learn how to use Cloud Functions for Firebase in your startup.
+    </p>
+
+    <paper-button id="enroll">ENROLL NOW</paper-button>
+
+    <google-map 
+      api-key="AIzaSyBQlNgM7WZtydGQMVDvnz2J2Om-MwzI7rk"
+      latitude="49" longitude="3" zoom="4" language="en" disable-zoom>
+
+
+      <google-map-marker latitude="49" longitude="3" title="Go Giants!">
+      <b>GDG Whatever</b><br><br>
+      27 Almo St.<br>
+      6070 Christiania<br>
+      DENMARK<br><br>
+      <a href="#">Enroll straightaway!</a> </google-map-marker>
+
+
+    </google-map>
+
+
+    <h1>Participant Startups</h1>
+
+    <p>
+      
+      TBC
+    </p>
+
+    <footer>C 2017 GDG</footer>
+
+
+
+
   </template>
+
+
 
   <script>
     /**
      * @customElement
      * @polymer
-     */
+    */
     class FunctionsApp extends Polymer.Element {
       static get is() { return 'functions-app'; }
       static get properties() {
         return {
-          prop1: {
+          events: {
+            type: Array,
+            value: function(){
+              return [
+                {
+                  'name': 'Aalborg',
+                  'latLog': {
+                    'lat': 0.0,
+                    'log': 0.0
+                  },
+                  'link': 'https://meetup.com/whatever'
+          
+                },
+              ];
+            }
+          },
+          
+          name: {
             type: String,
-            value: 'functions-app'
+            value: 'Ulises'
           }
         };
       }
