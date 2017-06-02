@@ -20,6 +20,19 @@
         height: 240px;
       }
 
+      .yellow-stripe {
+        width: 100%;
+        background-color: #FFCA28;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        margin-top: 40px;
+      }
+
+      .yellow-stripe h1 {
+        font-size: 40px;
+        font-weight: 500;
+      }
+
       header h1 {
         color: white;
         font-size: 60px;
@@ -28,6 +41,7 @@
         padding-top: 50px;
         margin-top: 0px;
         margin-bottom: 10px;
+        background-color: inherit;
       }
 
       paper-icon-button {
@@ -57,23 +71,36 @@
         text-decoration: none;
       }
 
-      
+      .next-dates ul {
+        list-style-type: none;
+        padding:0px;
+        margin: 70px auto;
+      }
+
+      .next-dates ul li {
+        margin: 0px auto;
+        font-size: 20px;
+        font-weight: 200;
+        padding: 24px;
+        border-bottom: solid 1px gray;
+        width: 70%;
+      }
+
+      .next-dates ul li:hover {
+        background-color: #EEEEEE;
+      }
 
       a:hover {
-        border-bottom: medium dotted #F57C00;
+       color: #FFA000;
       }
 
-      a:active {
-        color: #FFCA28;
-        border-bottom-color: #FFCA28;
-      }
 
       google-map {
         height: 330px;
         width: 100%;
       }
 
-      .main { 
+      p { 
         padding: 70px;
         font-size: 28px;
         max-width: 1000px;
@@ -82,7 +109,7 @@
         font-weight: 200;
       }
 
-      #enroll {
+      paper-button {
         margin-bottom: 50px;
         font-size: 20px;
         --paper-button-ink-color: #FFCA28;
@@ -92,26 +119,62 @@
         };
       }
 
-      @media screen and (max-width: 960px){
+      .logo-container {
+        padding: 70px;
+      }
+
+      .logo-container img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 170px;
+        margin: 0px 13px;
+      }
+
+      footer {
+        width: 100%;
+        margin-top: 70px;
+        min-height: 230px;
+        background-color: #08081d;
+        color: white;
+        padding-top: 50px;
+        font-weight: 200;
+        font-size: 20px;
+      }
+
+
+      @media screen and (max-width: 900px){
+        header {
+          height: 200px;
+        }
         header h1 {
           font-size: 33px;
           padding-top: 60px;
           padding-right: 40px;
           padding-left: 40px;
-
         }
+
         header h2 {
-          font-size: 24px;
+          font-size: 22px;
           padding-right: 40px;
           padding-left: 40px;
 
         }
 
-        .main { 
+        p {
+          padding: 40px;
           font-size: 22px;
         }
 
+        .yellow-stripe h1 {
+          font-size: 30px;
+        }
         
+      }
+
+      @media screen and (max-width: 505px){
+        header h1 {
+          padding-top: 35px;
+        }
       }
 
 
@@ -123,38 +186,71 @@
       <h2>GDG Sessions for Startups</h2> 
     </header>
 
-    <p class="main">
+    <p>
       Join mentors such as <a href="#">Paola García</a> and <a href="#">Carlos Azaustre</a> in one of your local GDG events in order to learn how to use Cloud Functions for Firebase in your startup.
     </p>
 
-    <paper-button id="enroll">ENROLL NOW</paper-button>
+    <a href="#"><paper-button>ENROLL NOW</paper-button></a>
 
     <google-map 
       api-key="AIzaSyBQlNgM7WZtydGQMVDvnz2J2Om-MwzI7rk"
-      latitude="49" longitude="3" zoom="4" language="en" disable-zoom>
+      latitude="49" longitude="3" zoom="3" language="en" disable-zoom>
 
-
-      <google-map-marker latitude="49" longitude="3" title="Go Giants!">
-      <b>GDG Whatever</b><br><br>
-      27 Almo St.<br>
-      6070 Christiania<br>
-      DENMARK<br><br>
-      <a href="#">Enroll straightaway!</a> </google-map-marker>
-
+      <template is="dom-repeat" 
+        items="[[events]]" 
+        as="event">
+        <google-map-marker 
+          latitude="[[event.coord.lat]]" 
+          longitude="[[event.coord.lon]]" 
+          title="[[event.community]]">
+          <b>[[event.community]]</b><br>
+          [[event.location]]<br>
+          [[event.country]]<br><br>
+          <a href="[[event.rsvp]]">Enroll now!</a>
+        </google-map-marker>
+      </template>
 
     </google-map>
 
+    <div class="next-dates">
+      <ul>
+        <template is="dom-repeat" 
+        items="[[events]]" 
+        as="event">
+          <a href="[[event.rsvp]]"><li><b>[[event.date]]</b>, [[event.community]] ([[event.country]])</li></a>
+        </template>
+      </ul>
+    </div>
 
-    <h1>Participant Startups</h1>
+    <div class="yellow-stripe">
+      <h1>Participant Startups</h1>
+    </div>
+
+    <div class="logo-container">
+      <template is="dom-repeat" 
+        items="[[startups]]" 
+        as="startup">
+        <img src="[[startup.image]]"/>
+      </template>
+     
+    </div>
+
+    <div class="yellow-stripe">
+      <h1>Organize an Event</h1>
+    </div>
 
     <p>
-      
-      TBC
+      Interested in organizing a local Cloud Functions for Firebase event?
     </p>
 
-    <footer>C 2017 GDG</footer>
+    <a href="#"><paper-button>ORGANIZE AN EVENT</paper-button></a>
 
 
+    <footer>
+      <a href="https://developers.google.com/groups/">
+      <img src="https://developers.google.com/_static/8d56ebfbe9/images/gdg-program-icon.png?hl=es-419" alt="GDG">
+      </a>
+    </footer>
 
 
   </template>
@@ -172,24 +268,32 @@
         return {
           events: {
             type: Array,
-            value: function(){
+            value: function() {
               return [
                 {
-                  'name': 'Aalborg',
-                  'latLog': {
-                    'lat': 0.0,
-                    'log': 0.0
+                  'community': 'GDG Aalborg',
+                  'coord': {
+                    'lat': 57.0267316,
+                    'lon': 9.7677385
                   },
-                  'link': 'https://meetup.com/whatever'
-          
+                  'country': 'DENMARK',
+                  'rsvp': 'https://meetup.com/whatever',
+                  'date': 'July 24th',
+                  'location': 'Somewhere in Aalborg'
                 },
               ];
             }
           },
           
-          name: {
-            type: String,
-            value: 'Ulises'
+          startups: {
+            type: Array,
+            value: function() {
+              return [{
+                'name': 'Chefly',
+                'image': 'https://www.adigital.org/media/chefly-700x466.jpg',
+                'url': '#'
+              },];
+            }
           }
         };
       }
