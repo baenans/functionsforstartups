@@ -181,7 +181,9 @@
     </style>
 
     <header>
-      <paper-icon-button icon="app-icons:share"></paper-icon-button>
+      <a target="_blank" href="https://twitter.com/home?status=%F0%9F%93%A2%20join%20us%20to%20the%20Cloud%20Functions%20for%20%23firebase%0A%20%F0%9F%94%A5%20hands%20on%20sessions,%20powered%20by%20%40gdg.%0ACheck%20it%20out%20%E2%9E%A1%EF%B8%8F%20https%3A//[[url]]">
+        <paper-icon-button icon="app-icons:share"></paper-icon-button>
+      </a>
       <h1>Cloud Functions for Firebase</h1>
       <h2>hands-on for Startups</h2> 
     </header>
@@ -266,6 +268,10 @@
       static get is() { return 'functions-app'; }
       static get properties() {
         return {
+          url: {
+            type: String,
+            value: 'functions-for-startups.firebaseapp.com'
+          },
           events: {
             type: Array,
             value: function() {
