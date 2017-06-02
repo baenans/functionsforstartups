@@ -1,6 +1,6 @@
 {
-  "name": "functionsforstartups",
-  "short_name": "functionsforstartups",
+  "name": "Cloud Functions for Firebase Hands on",
+  "short_name": "Cloud Functions for Firebase",
   "start_url": "/",
   "display": "standalone"
 }
