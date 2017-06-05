@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
 <link rel="import" href="../app-icons.html">
@@ -180,6 +181,21 @@
 
     </style>
 
+    <firebase-app
+      name="functions-for-startups"
+      auth-domain="functions-for-startups.firebaseapp.com"
+      database-url="https://functions-for-startups.firebaseio.com"
+      api-key="AIzaSyAf0imit2hCz7wUV-Bo-SJmYZxnt_a__x8"
+      storage-bucket="unctions-for-startups.appspot.com"
+      messaging-sender-id="674244677439">
+    </firebase-app>
+
+    <firebase-document
+      app-name="functions-for-startups"
+      path="/data"
+      data="{{data}}">
+    </firebase-document>
+
     <header>
       <a target="_blank" href="https://twitter.com/home?status=%F0%9F%93%A2%20join%20us%20to%20the%20Cloud%20Functions%20for%20%23firebase%0A%20%F0%9F%94%A5%20hands%20on%20sessions,%20powered%20by%20%40gdg.%0ACheck%20it%20out%20%E2%9E%A1%EF%B8%8F%20https%3A//[[url]]">
         <paper-icon-button icon="app-icons:share"></paper-icon-button>
@@ -192,14 +208,14 @@
       Join mentors such as <a href="https://twitter.com/ggarciapaola">Paola García</a> and <a href="https://twitter.com/carlosazaustre">Carlos Azaustre</a> in one of your local GDG events in order to learn how to use Cloud Functions for Firebase in your startup.
     </p>
 
-    <a href="https://goo.gl/P8JSW7"><paper-button>ENROLL NOW</paper-button></a>
+    <a href="https://goo.gl/P8JSW7"><paper-button>ENROL NOW</paper-button></a>
 
     <google-map 
       api-key="AIzaSyBQlNgM7WZtydGQMVDvnz2J2Om-MwzI7rk"
       latitude="49" longitude="3" zoom="3" language="en" disable-zoom>
 
       <template is="dom-repeat" 
-        items="[[events]]" 
+        items="[[data.events]]" 
         as="event">
         <google-map-marker 
           latitude="[[event.coord.lat]]" 
@@ -208,7 +224,7 @@
           <b>[[event.community]]</b><br>
           [[event.location]]<br>
           [[event.country]]<br><br>
-          <a href="[[event.rsvp]]">Enroll now!</a>
+          <a href="[[event.rsvp]]">Enrol now!</a>
         </google-map-marker>
       </template>
 
@@ -217,7 +233,7 @@
     <div class="next-dates">
       <ul>
         <template is="dom-repeat" 
-        items="[[events]]" 
+        items="[[data.events]]" 
         as="event">
           <a href="[[event.rsvp]]"><li><b>[[event.date]]</b>, [[event.community]] ([[event.country]])</li></a>
         </template>
@@ -230,9 +246,9 @@
 
     <div class="logo-container">
       <template is="dom-repeat" 
-        items="[[startups]]" 
+        items="[[data.startups]]" 
         as="startup">
-        <img src="[[startup.image]]"/>
+        <a href="[[startup.url]]" target="_blank"><img alt="[[startup.name]]" src="[[startup.image]]"/></a>
       </template>
      
     </div>
@@ -249,8 +265,8 @@
 
 
     <footer>
-      <a href="https://developers.google.com/groups/">
-      <img src="https://developers.google.com/_static/8d56ebfbe9/images/gdg-program-icon.png?hl=es-419" alt="GDG">
+      <a href="https://developers.google.com/groups/" target="_blank">
+      <img src="https://developers.google.com/_static/8d56ebfbe9/images/gdg-program-icon.png?hl=es-419" alt="Google Developer Groups">
       </a>
     </footer>
 
@@ -269,60 +285,10 @@
           url: {
             type: String,
             value: 'functions-for-startups.firebaseapp.com'
-          },
-          events: {
-            type: Array,
-            value: function() {
-              return [
-                {
-                  'community': 'GDG Madrid',
-                  'coord': {
-                    'lat': 40.4125986,
-                    'lon': -3.7204346
-                  },
-                  'country': 'SPAIN',
-                  'rsvp': 'https://goo.gl/0HxvLn',
-                  'date': 'June 21st',
-                  'location': 'Campus Madrid'
-                },
-                {
-                  'community': 'GDG Aalborg',
-                  'coord': {
-                    'lat': 57.0267316,
-                    'lon': 9.7677385
-                  },
-                  'country': 'DENMARK',
-                  'rsvp': 'https://goo.gl/vBwlwA',
-                  'date': 'June 23rd',
-                  'location': 'Somewhere in Aalborg'
-                },
-                {
-                  'community': 'GDG Braga',
-                  'coord': {
-                    'lat': 41.5472536,
-                    'lon': -8.4814606
-                  },
-                  'country': 'PORTUGAL',
-                  'rsvp': 'https://goo.gl/JOUmzD',
-                  'date': 'July 1st',
-                  'location': 'Somewhere in Braga'
-                },
-              ];
-            }
-          },
-          
-          startups: {
-            type: Array,
-            value: function() {
-              return [{
-                'name': 'Chefly',
-                'image': 'https://www.adigital.org/media/chefly-700x466.jpg',
-                'url': '#'
-              },];
-            }
           }
         };
       }
+
     }
 
     window.customElements.define(FunctionsApp.is, FunctionsApp);
