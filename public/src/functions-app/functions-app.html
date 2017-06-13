@@ -74,7 +74,7 @@
 
       .next-dates ul {
         list-style-type: none;
-        padding:0px;
+        padding: 0px;
         margin: 70px auto;
       }
 
@@ -121,14 +121,16 @@
       }
 
       .logo-container {
+        margin: 0 auto;
+        max-width: 900px;
         padding: 70px;
       }
 
       .logo-container img {
         display: inline-block;
         vertical-align: middle;
-        width: 170px;
-        margin: 0px 13px;
+        width: 160px;
+        margin: 20px 13px;
       }
 
       footer {
@@ -197,7 +199,7 @@
     </firebase-document>
 
     <header>
-      <a target="_blank" href="https://twitter.com/home?status=%F0%9F%93%A2%20join%20us%20to%20the%20Cloud%20Functions%20for%20%23firebase%0A%20%F0%9F%94%A5%20hands%20on%20sessions,%20powered%20by%20%40gdg.%0ACheck%20it%20out%20%E2%9E%A1%EF%B8%8F%20https%3A//[[url]]">
+      <a target="_blank" href="https://twitter.com/home?status=%F0%9F%93%A2%20join%20us%20to%20the%20Cloud%20Functions%20for%20%23firebase%0A%20%F0%9F%94%A5%20hands%20on%20sessions,%20powered%20by%20%40gdg.%0ACheck%20it%20out%20%E2%9E%A1%EF%B8%8F%20https%3A//[[data.url]]">
         <paper-icon-button icon="app-icons:share"></paper-icon-button>
       </a>
       <h1>Cloud Functions for Firebase</h1>
@@ -223,6 +225,7 @@
           title="[[event.community]]">
           <b>[[event.community]]</b><br>
           [[event.location]]<br>
+          [[event.address]]<br>
           [[event.country]]<br><br>
           <a href="[[event.rsvp]]">Enrol now!</a>
         </google-map-marker>
@@ -235,7 +238,7 @@
         <template is="dom-repeat" 
         items="[[data.events]]" 
         as="event">
-          <a href="[[event.rsvp]]"><li><b>[[event.date]]</b>, [[event.community]] ([[event.country]])</li></a>
+          <a href="[[event.rsvp]]"><li><b>[[event.community]] ([[event.country]])</b><br>[[event.date]] @ [[event.location]]</li></a>
         </template>
       </ul>
     </div>
@@ -280,14 +283,6 @@
     */
     class FunctionsApp extends Polymer.Element {
       static get is() { return 'functions-app'; }
-      static get properties() {
-        return {
-          url: {
-            type: String,
-            value: 'functions-for-startups.firebaseapp.com'
-          }
-        };
-      }
 
     }
 

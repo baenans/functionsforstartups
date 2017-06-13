@@ -1,0 +1,76 @@
+{
+  "data" : {
+    "events" : [ {
+      "address" : "C. Moreno Nieto, 2",
+      "community" : "GDG Madrid",
+      "coord" : {
+        "lat" : 40.4125986,
+        "lon" : -3.7204346
+      },
+      "country" : "SPAIN",
+      "date" : "21st June / 10am",
+      "location" : "Campus Madrid",
+      "rsvp" : "https://goo.gl/4JMOL3"
+    }, {
+      "address" : "Rendsburggade 14",
+      "community" : "GDG Aalborg",
+      "coord" : {
+        "lat" : 57.0487261,
+        "lon" : 9.9228055
+      },
+      "country" : "DENMARK",
+      "date" : "23rd June / 2pm",
+      "location" : "CREATE Aalborg University",
+      "rsvp" : "https://goo.gl/y4kXbI"
+    }, {
+      "address" : "R. dos Capelistas, 93",
+      "community" : "GDG Braga",
+      "coord" : {
+        "lat" : 41.551815,
+        "lon" : -8.4264726
+      },
+      "country" : "PORTUGAL",
+      "date" : "1st July / 10am",
+      "location" : "Braga I/O",
+      "rsvp" : "https://goo.gl/hLO0U0"
+    } ],
+    "startups" : [ {
+      "image" : "https://www.adigital.org/media/chefly-700x466.jpg",
+      "name" : "Chefly",
+      "url" : "https://chefly.co/"
+    }, {
+      "image" : "https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAW7AAAAJDcyMzc3Mzc5LTdlZmYtNDM3Ni05MGM0LTczN2U5MmI2YzI3NA.png",
+      "name" : "Alianzo",
+      "url" : "http://www.alianzo.com"
+    }, {
+      "image" : "https://www.playsiteapp.com/wp-content/uploads/2017/05/PlaySite_logo_material_2_min.png",
+      "name" : "Playsite",
+      "url" : "https://www.playsiteapp.com"
+    }, {
+      "image" : "https://uphold.com/release/images/logo@1x.3c9adf33.png",
+      "name" : "Uphold",
+      "url" : "https://uphold.com"
+    }, {
+      "image" : "http://rsrc.1001cupomdedescontos.com.br/2w912ktneekgwkkko0.png",
+      "name" : "Promofarma",
+      "url" : "https://www.promofarma.com/"
+    }, {
+      "image" : "https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAZFAAAAJDE4ZDgxM2NiLWMzZGItNGUyYy04YmJjLTFiYmRmMzE0MGFjMg.png",
+      "name" : "Xtel",
+      "url" : "http://xtel.dk/"
+    }, {
+      "image" : "http://getlevelup.com/img/logo.png",
+      "name" : "LevelUp",
+      "url" : "http://getlevelup.com"
+    }, {
+      "image" : "https://i1.wp.com/pre.do/wp-content/uploads/2017/04/Logo_Green_dot-e1491401740235.png?zoom=2&fit=583%2C151",
+      "name" : "PreDo",
+      "url" : "http://pre.do/"
+    }, {
+      "image" : "https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAASpAAAAJGQ1NGNiZTJlLWZhZWItNGExNi1iNTRhLTk3Y2MxZDRhNjBiNA.png",
+      "name" : "MapsPeople",
+      "url" : "https://www.mapspeople.com/"
+    } ],
+    "url" : "https://functions-for-startups.firebaseio.com/"
+  }
+}
